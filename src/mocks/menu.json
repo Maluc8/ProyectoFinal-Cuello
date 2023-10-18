@@ -1,0 +1,267 @@
+[
+    {
+        "id" : "0001",
+        "imagen" : "media/muzza.jfif", 
+        "nombre": "Pizza de Muzzarella", 
+        "ingredientes": "Salsa, muzzarella, orégano, aceituna", 
+        "precio": 700,
+        "categoria": "clasico"
+    },
+    {
+        "id" : "0002",
+        "imagen" :"media/especial.jpg",
+        "nombre":"Pizza de jamón morrón",
+        "ingredientes": "Salsa, muzzarella, jamón cocido, morrón, orégano, aceituna.", 
+        "precio":800,
+        "categoria": "clasico"
+    },
+    {
+        "id" : "0003",
+        "imagen" :"media/faina.webp",
+        "nombre": "Porción de fainá", 
+        "ingredientes":"Garbanzo, aceite de oliva", 
+        "precio":90,
+        "categoria": "clasico"
+    },
+    {
+        "id" : "0004",
+        "imagen" :"media/crudorucula.jfif",
+        "nombre":"Pizza de Jamón Crudo y Rúcula",
+        "ingredientes":"Salsa, muzzarella, jamón crudo, rúcula.",
+        "precio": 1200,
+        "categoria": "gourmet"
+    },
+    {
+        "id" : "0005",
+        "imagen" :"media/fugazeta.jfif",
+        "nombre":"Pizza Fugazzetta",
+        "ingredientes":"Muzzarella, cebolla, orégano, aceituna",
+        "precio": 1000,
+        "categoria": "clasico"
+    },
+    {
+        "id" : "0006",
+        "imagen" :"media/pizza4quesos.jpg",
+        "nombre":"Pizza 4 quesos",
+        "ingredientes":"Muzzarella, roquefort, parmesano, fontina, orégano, aceituna",
+        "precio": 1150,
+        "categoria": "gourmet"
+    },
+    {
+        "id" : "0007",
+        "imagen" :"media/pizzacalabresa.jpg",
+        "nombre":"Pizza Calabresa",
+        "ingredientes":"Salsa, muzzarella, longaniza, orégano, aceituna",
+        "precio": 1100,
+        "categoria": "clasico"
+    },
+    {
+        "id" : "0008",
+        "imagen" :"media/pizzachampignones.jpg",
+        "nombre":"Pizza de Champignones",
+        "ingredientes":"Salsa, muzzarella, jamón cocido, champignones, cebolla, orégano, aceituna",
+        "precio": 1400,
+        "categoria": "gourmet"
+    },
+    {
+        "id" : "0009",
+        "imagen" :"media/pizzamargarita.jpeg",
+        "nombre":"Pizza Margarita",
+        "ingredientes":"Salsa, muzzarella, albahaca, aceituna",
+        "precio": 1000,
+        "categoria": "clasico"
+    },
+    {
+        "id" : "0010",
+        "imagen" :"media/pizzanapolitana.jpg",
+        "nombre":"Pizza Napolitana",
+        "ingredientes":"Salsa, muzzarella, tomate, orégano, aceituna",
+        "precio": 1000,
+        "categoria": "clasico"
+    },
+    {
+        "id" : "0011",
+        "imagen" :"media/pizzaroquefort.png",
+        "nombre":"Pizza de Roquefort",
+        "ingredientes":"Salsa, muzzarella, roquefort, orégano, aceituna",
+        "precio": 1200,
+        "categoria": "gourmet"
+    },
+    {
+        "id" : "0012",
+        "imagen" :"media/empanadacarne.jfif", 
+        "nombre":"Empanada de Carne", 
+        "ingredientes":"Carne, cebolla, huevo, morrón, ajo, cebolla de verdeo.", 
+        "precio":100,
+        "categoria": "empanadas"
+    },
+    {
+        "id" : "0013",
+        "imagen":"media/empanadapollo.jpg",
+        "nombre": "Empanada de Pollo",
+        "ingredientes": "Pollo, cebolla, ajo, huevo, morrón, cebolla de verdeo.",
+        "precio": 100,
+        "categoria": "empanadas"
+    },
+    {
+        "id" : "0014",
+        "imagen":"media/empanadacebolla.gif",
+        "nombre": "Empanada de cebolla",
+        "ingredientes": "Muzzarella, cebolla.",
+        "precio": 100,
+        "categoria": "empanadas"
+    },
+    {
+        "id" : "0015",
+        "imagen":"media/empanadahumita.jpg",
+        "nombre": "Empanada de Humita",
+        "ingredientes": "Maíz, cebolla, queso rallado, manteca, nuez moscada.",
+        "precio": 100,
+        "categoria": "empanadas"
+    },
+    {
+        "id" : "0016",
+        "imagen":"media/empanadaroquefort.jpg",
+        "nombre": "Empanada de Roquefort",
+        "ingredientes": "Muzzarella, roquefort",
+        "precio": 100,
+        "categoria": "empanadas"
+    },
+    {
+        "id" : "0017",
+        "imagen": "media/coca500.webp",
+        "nombre": "Coca Cola 500 cc", 
+        "ingredientes":" ",
+        "precio": 100,
+        "categoria": "bebidas"
+    },
+    {
+        "id" : "0018",
+        "imagen": "media/cocazero1500.jfif",
+        "nombre": "Coca Cola Zero 1,5 lt", 
+        "ingredientes":" ",
+        "precio": 150,
+        "categoria": "bebidas"
+    },
+    {
+        "id" : "0019",
+        "imagen": "media/coca1500.webp",
+        "nombre": "Coca Cola 1,5 lt", 
+        "ingredientes":" ",
+        "precio": 150,
+        "categoria": "bebidas"
+    },
+    {
+        "id" : "0020",
+        "imagen": "media/coca225.jpg",
+        "nombre": "Coca Cola 2,25 lt", 
+        "ingredientes":" ",
+        "precio": 200,
+        "categoria": "bebidas"
+    },
+    {
+        "id" : "0021",
+        "imagen": "media/cocazero225.webp",
+        "nombre": "Coca Cola Zero 2,25 lt", 
+        "ingredientes":" ",
+        "precio": 200,
+        "categoria": "bebidas"
+    },
+    {
+        "id" : "0022",
+        "imagen": "media/sprite500.webp",
+        "nombre": "Sprite 500 cc", 
+        "ingredientes":" ",
+        "precio": 100,
+        "categoria": "bebidas"
+    },
+    {
+        "id" : "0023",
+        "imagen": "media/spritezero500.webp",
+        "nombre": "Sprite Zero 500 cc", 
+        "ingredientes":" ",
+        "precio": 100,
+        "categoria": "bebidas"
+    },
+    {
+        "id" : "0024",
+        "imagen": "media/sprite1500.jpg",
+        "nombre": "Sprite 1,5 lt", 
+        "ingredientes":" ",
+        "precio": 150,
+        "categoria": "bebidas"
+    },
+    {
+        "id" : "0025",
+        "imagen": "media/sprite225.jpg",
+        "nombre": "Sprite 2,25 lt", 
+        "ingredientes":" ",
+        "precio": 200,
+        "categoria": "bebidas"
+    },
+    {
+        "id" : "0026",
+        "imagen": "media/spritezero225.png",
+        "nombre": "Sprite Zero 2,25 lt", 
+        "ingredientes":" ",
+        "precio": 200,
+        "categoria": "bebidas"
+    },
+    {
+        
+        "id" : "0027",
+        "imagen": "media/heineken473.jpg",
+        "nombre": "Heineken 473 cc", 
+        "ingredientes":" ",
+        "precio": 150,
+        "categoria": "alcohol"
+    },
+    {
+        "id" : "0028",
+        "imagen": "media/heineken710.jpg",
+        "nombre": "Heineken 710 cc", 
+        "ingredientes":" ",
+        "precio": 200,
+        "categoria": "alcohol"
+    },
+    {
+        "id" : "0029",
+        "imagen":"media/heineken.webp",
+        "nombre": "Heineken 1 lt", 
+        "ingredientes":" ",
+        "precio": 200,
+        "categoria": "alcohol"
+    },
+    {
+        "id" : "0030",
+        "imagen": "media/quilmes473.webp",
+        "nombre": "Quilmes 473 cc", 
+        "ingredientes":" ",
+        "precio": 150,
+        "categoria": "alcohol"
+    },
+    {
+        "id" : "0031",
+        "imagen": "media/quilmesredlager473.jpg",
+        "nombre": "Quilmes Red Lager 473 cc", 
+        "ingredientes":" ",
+        "precio": 150,
+        "categoria": "alcohol"
+    },
+    {
+        "id" : "0032",
+        "imagen": "media/quilmesstout473.webp",
+        "nombre": "Quilmes Stout 473 cc", 
+        "ingredientes":" ",
+        "precio": 150,
+        "categoria": "alcohol"
+    },
+    {
+        "id" : "0033",
+        "imagen": "media/quilmes1lt.webp",
+        "nombre": "Quilmes 1 lt", 
+        "ingredientes":" ",
+        "precio": 200,
+        "categoria": "alcohol"
+    }
+]
