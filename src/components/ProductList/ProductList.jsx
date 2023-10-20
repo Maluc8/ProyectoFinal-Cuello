@@ -1,7 +1,7 @@
 import { CircularProgress, Grid, Typography } from '@mui/material';
 import useAsyncMock from '../../hooks/useAsyncMock';
 import products from '../../mocks/menu.json';
-import Product from '../Product/Product.jsx';
+import ProductDetail from '../ProductDetail/ProductDetail.jsx';
 
 function ProductList() {
     const {data, loading}= useAsyncMock(products);

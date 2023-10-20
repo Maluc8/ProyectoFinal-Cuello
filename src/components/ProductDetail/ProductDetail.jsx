@@ -3,15 +3,16 @@ import { Card, CardContent, CircularProgress, Typography } from "@mui/material";
 import { useParams } from "react-router-dom";
 import products from '../../mocks/menu.json'
 import useAsyncMock from '../../hooks/useAsyncMock.jsx'
+import Counter from '../Counter/Counter.jsx'
 
 const ProductDetail = () =>{
     const {id} = useParams();
-    console.log('ProductDetail id',id);
     const {data, loading} = useAsyncMock(products);
 
     if (loading) return <CircularProgress />
 
     const {imagen,nombre, ingredientes, precio, categoria} = data.find(product => product.id === id);
+    //imagen = `../../assets/${imagen}`
 
     return (
         <Card className="card-products-container" >
@@ -21,6 +22,7 @@ const ProductDetail = () =>{
                 {ingredientes.trim().length > 0 && (<Typography>Ingredientes: {ingredientes}</Typography>)}
                 <Typography>{precio.toFixed(2)}</Typography>
                 <Typography>{categoria}</Typography>
+                <Counter />
             </CardContent>
         </Card>
     )

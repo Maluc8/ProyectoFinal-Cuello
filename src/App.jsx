@@ -3,7 +3,6 @@ import ItemListContainer from './components/ItemListContainer/ItemListContainer.
 import Navbar from './components/Navbar/Navbar.jsx';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ProductDetail from './components/ProductDetail/ProductDetail.jsx';
-import CategorySelector from './components/CategorySelector/CategorySelector.jsx'
 import Categories from './components/Categories/Categories';
 
 function App() {
