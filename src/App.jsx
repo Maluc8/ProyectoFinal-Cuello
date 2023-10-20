@@ -4,9 +4,11 @@ import Navbar from './components/Navbar/Navbar.jsx';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ProductDetail from './components/ProductDetail/ProductDetail.jsx';
 import Categories from './components/Categories/Categories';
+import { cartContext } from './context/cartContext';
 
 function App() {
   return (<>
+    <cartContext.Provider value={[]}>
     <Router>
       <Navbar/>
       <Routes>
@@ -16,6 +18,7 @@ function App() {
         <Route exact path='/categories' element= {<Categories />} />
       </Routes>
     </Router>
+    </cartContext.Provider>
   </>);
 }
 

@@ -3,7 +3,7 @@ import { Card, CardContent, CircularProgress, Typography } from "@mui/material";
 import { useParams } from "react-router-dom";
 import products from '../../mocks/menu.json'
 import useAsyncMock from '../../hooks/useAsyncMock.jsx'
-import Counter from '../Counter/Counter.jsx'
+import AddProduct from "../AddProduct/AddProduct";
 
 const ProductDetail = () =>{
     const {id} = useParams();
@@ -22,7 +22,7 @@ const ProductDetail = () =>{
                 {ingredientes.trim().length > 0 && (<Typography>Ingredientes: {ingredientes}</Typography>)}
                 <Typography>{precio.toFixed(2)}</Typography>
                 <Typography>{categoria}</Typography>
-                <Counter />
+                <AddProduct />
             </CardContent>
         </Card>
     )

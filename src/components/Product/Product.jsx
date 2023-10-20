@@ -1,7 +1,7 @@
 import { Image } from "@mui/icons-material";
 import { Card, CardContent, Grid, Typography} from "@mui/material";
 import {Link } from 'react-router-dom'
-import Counter from '../Counter/Counter.jsx'
+import AddProduct from "../AddProduct/AddProduct.jsx";
 
 const product = ({product}) =>{
     const {id, imagen, nombre, precio} = product;
@@ -13,7 +13,7 @@ const product = ({product}) =>{
                 <Image src={`./public/${imagen}`} />
                 <Typography>{precio.toFixed(2)}</Typography>
             </CardContent>
-            <Counter/>
+            <AddProduct/>
         </Card>
     </Grid>)
 }
