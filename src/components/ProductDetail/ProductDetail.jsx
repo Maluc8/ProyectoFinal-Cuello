@@ -22,7 +22,7 @@ const ProductDetail = () =>{
                 {ingredientes.trim().length > 0 && (<Typography>Ingredientes: {ingredientes}</Typography>)}
                 <Typography>{precio.toFixed(2)}</Typography>
                 <Typography>{categoria}</Typography>
-                <AddProduct />
+                <AddProduct id={id}/>
             </CardContent>
         </Card>
     )

@@ -5,7 +5,6 @@ import AddProduct from "../AddProduct/AddProduct.jsx";
 
 const product = ({product}) =>{
     const {id, imagen, nombre, precio} = product;
-    console.log(`./public/${imagen}`);
     return (<Grid item key={id} xs={12} sm={6} md={4} lg={3}>
         <Card className="card-products-container" >
             <CardContent component={Link} to={`/item/${id}`}>
@@ -13,7 +12,7 @@ const product = ({product}) =>{
                 <Image src={`./public/${imagen}`} />
                 <Typography>{precio.toFixed(2)}</Typography>
             </CardContent>
-            <AddProduct/>
+            <AddProduct id={id}/>
         </Card>
     </Grid>)
 }

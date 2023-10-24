@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import { cartContext } from '../../context/cartContext';
 
 const CartWidget = () => {
-  const itemsCount = useContext(cartContext).length;
+  const itemsCount = useContext(cartContext).items.length;
   return (
     <div>
         <ShoppingCartRoundedIcon />
