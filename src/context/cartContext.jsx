@@ -11,23 +11,26 @@ export const CartContextProvider = (props) =>{
     localStorage.setItem('cartItems', JSON.stringify(items));
   }, [items]);
 
-    const addItem = (id,quantity)=>{
-      if (quantity === 0) {
-        setItems(items.filter(item => item.id !== id));
-      } else {
-        const itemFound = items.find(item => item.id === id);
-        if (!itemFound) {
-          setItems([...items, { id: id, quantity: quantity }]);
-        } else {
-          itemFound.quantity = quantity;
-          setItems(items);
-        }
-      }
-    };
+  const addItem = (id, quantity) => {
+    const existingItemIndex = items.findIndex(item => item.id === id);
+
+    if (existingItemIndex !== -1) {
+      const updatedItems = [...items];
+      updatedItems[existingItemIndex].quantity = quantity;
+      setItems(updatedItems);
+    } else {
+      setItems([...items, { id: id, quantity: quantity }]);
+    }
+  };
+
+    const removeItem = (productId) => {
+      setItems(prevItems => prevItems.filter(item => item.id !== productId));
+  };
 
     const contextValue = {
         items,
         addItem,
+        removeItem
       };
     
       return (

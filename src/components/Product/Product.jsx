@@ -9,7 +9,7 @@ const product = ({product}) =>{
         <Card className="card-products-container" >
             <CardContent component={Link} to={`/item/${id}`}>
                 <Typography variant="h5">{nombre}</Typography>
-                <Image src={`./public/${imagen}`} />
+                <Image src={imagen} />
                 <Typography>{precio.toFixed(2)}</Typography>
             </CardContent>
             <AddProduct id={id}/>

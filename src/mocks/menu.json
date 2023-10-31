@@ -1,7 +1,7 @@
 [
     {
         "id" : "0001",
-        "imagen" : "media/muzza.jfif", 
+        "imagen" : "gs://react-coderhouse-cuello.appspot.com/media/muzza.jfif", 
         "nombre": "Pizza de Muzzarella", 
         "ingredientes": "Salsa, muzzarella, orégano, aceituna", 
         "precio": 700,

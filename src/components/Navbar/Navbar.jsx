@@ -1,6 +1,6 @@
 import CartWidget from '../CartWiget/CartWidget';
 import './Nabvar.css';
-import { AppBar, Button, Toolbar, Link} from '@mui/material';
+import { AppBar, Toolbar, Link} from '@mui/material';
 
 const Navbar = () => {
     return (
