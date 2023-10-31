@@ -12,7 +12,6 @@ const ProductDetail = () =>{
     if (loading) return <CircularProgress />
 
     const {imagen,nombre, ingredientes, precio, categoria} = data.find(product => product.id === id);
-    //imagen = `../../assets/${imagen}`
 
     return (
         <Card className="card-products-container" >
