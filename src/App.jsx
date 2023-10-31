@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ProductDetail from './components/ProductDetail/ProductDetail.jsx';
 import Categories from './components/Categories/Categories';
 import { CartContextProvider } from './context/cartContext';
-import Cart from './components/Cart/Cart.jsx'
+import Cart from './components/Cart/Cart.jsx';
 
 function App() {
   return (<>

@@ -16,7 +16,7 @@ export const CartContextProvider = (props) =>{
 
     if (existingItemIndex !== -1) {
       const updatedItems = [...items];
-      updatedItems[existingItemIndex].quantity = quantity;
+      updatedItems[existingItemIndex].quantity = updatedItems[existingItemIndex].quantity + quantity;
       setItems(updatedItems);
     } else {
       setItems([...items, { id: id, quantity: quantity }]);
@@ -27,10 +27,15 @@ export const CartContextProvider = (props) =>{
       setItems(prevItems => prevItems.filter(item => item.id !== productId));
   };
 
+  const clearCart = () => {
+    setItems([]);
+};
+
     const contextValue = {
         items,
         addItem,
-        removeItem
+        removeItem,
+        clearCart
       };
     
       return (

@@ -3,13 +3,19 @@ import { cartContext } from '../../context/cartContext';
 import ItemCart from '../ItemCart/ItemCart.jsx'
 import useAsyncMock from '../../hooks/useAsyncMock';
 import products from '../../mocks/menu.json';
-import { CircularProgress } from '@mui/material';
+import { CircularProgress, Button, TextField} from '@mui/material';
 
 const Cart = () => {
-    const { items, removeItem } = useContext(cartContext);
+    const { items, removeItem, clearCart } = useContext(cartContext);
     const { data, loading } = useAsyncMock(products);
 
     const [total, setTotal] = useState(0);
+    const [showForm, setShowForm] = useState(false);
+    const [formData, setFormData] = useState({
+        nombre: '',
+        telefono: '',
+        direccion: ''
+    });
 
     useEffect(() => {
         if (!loading && data) {
@@ -26,6 +32,38 @@ const Cart = () => {
     const handleRemoveItem = (productId) => {
         removeItem(productId);
     };
+
+    const handleClearCart = () => {
+        clearCart();
+    };
+
+    const handleCheckout = () => {
+        setShowForm(true);
+    };
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prevData) => ({
+            ...prevData,
+            [name]: value
+        }));
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        
+        console.log('Dentro del submit');
+
+    };
+
+    if (items.length === 0) {
+        return (
+            <>
+                <p style={{ fontSize: '24px', textAlign: 'center' }}>El carrito está vacío.</p>
+            </>
+        );
+    }
+
     return (
         <>
             <table>
@@ -53,6 +91,49 @@ const Cart = () => {
                     </tr>
                 </tfoot>
             </table>
+            <Button variant="contained" onClick={handleClearCart}>Vaciar Carrito</Button>
+            <Button variant="contained" onClick={handleCheckout}>
+                Checkout
+            </Button>
+            {showForm && (
+                <div style={{ marginTop: '20px' }}>
+                    <form onSubmit={handleSubmit}>
+                        <TextField
+                            id="nombre"
+                            name="nombre"
+                            label="Nombre"
+                            value={formData.nombre}
+                            onChange={handleInputChange}
+                            variant="outlined"
+                            fullWidth
+                            margin="normal"
+                        />
+                        <TextField
+                            id="telefono"
+                            name="telefono"
+                            label="Teléfono"
+                            value={formData.telefono}
+                            onChange={handleInputChange}
+                            variant="outlined"
+                            fullWidth
+                            margin="normal"
+                        />
+                        <TextField
+                            id="direccion"
+                            name="direccion"
+                            label="Dirección"
+                            value={formData.direccion}
+                            onChange={handleInputChange}
+                            variant="outlined"
+                            fullWidth
+                            margin="normal"
+                        />
+                        <Button type="submit" variant="contained">
+                            Enviar
+                        </Button>
+                    </form>
+                </div>
+            )}
         </>
     )
 }
