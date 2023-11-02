@@ -1,30 +1,36 @@
 import { CircularProgress, Grid, Typography } from '@mui/material';
-import useAsyncMock from '../../hooks/useAsyncMock.jsx';
-import products from '../../mocks/menu.json';
 import Product from '../Product/Product';
 import { useParams } from 'react-router-dom';
+import useFirestore from '../../hooks/useFirestore.jsx';
 
 function ItemListContainer() {
-    let {data, loading}= useAsyncMock(products);
-    const{id} = useParams()
-    if(loading) return <CircularProgress />
-    
-    if(id){
-      data = data.filter(product => product.categoria === id)
-    }
+    const { data, loading } = useFirestore('menu', 'categoria', useParams().id);
 
-  return (
-    <div className='container'>
-        <Typography variant={'h2'}>Menu</Typography>
-        <Grid container spacing={3}>
-            {
-                data.map(product =>{
-                    return <Product key={product.id} product={product} />
-                })
-            }
-        </Grid>
-    </div>
-  )
+    if (loading) return <CircularProgress />;
+
+    return (
+        <div className='container'>
+            <Typography variant={'h2'}>Menu</Typography>
+            <Grid container spacing={3}>
+                {data.map((product) => {
+                    const productId = product.id;
+                    const productData = product;
+                    if (productId) {
+                        const formattedProduct = {
+                            ...productData,
+                            id: productId,
+                            precio: parseFloat(productData.precio)
+                        };
+                        return <Product key={productId} product={formattedProduct} />;
+                    } else {
+                        console.warn('Product ID is undefined: ', product);
+                        return null;
+                    }
+                })}
+            </Grid>
+        </div>
+    );
 }
 
 export default ItemListContainer;
+

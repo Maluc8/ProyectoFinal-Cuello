@@ -1,13 +1,13 @@
-import { useContext,useState, useEffect } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { cartContext } from '../../context/cartContext';
-import ItemCart from '../ItemCart/ItemCart.jsx'
-import useAsyncMock from '../../hooks/useAsyncMock';
-import products from '../../mocks/menu.json';
-import { CircularProgress, Button, TextField} from '@mui/material';
+import ItemCart from '../ItemCart/ItemCart.jsx';
+import { CircularProgress, Button, TextField } from '@mui/material';
+import useFirestore from '../../hooks/useFirestore';
+import {addDoc, collection, getFirestore} from 'firebase/firestore'
 
 const Cart = () => {
     const { items, removeItem, clearCart } = useContext(cartContext);
-    const { data, loading } = useAsyncMock(products);
+    const { data, loading } = useFirestore('menu');
 
     const [total, setTotal] = useState(0);
     const [showForm, setShowForm] = useState(false);
@@ -16,6 +16,7 @@ const Cart = () => {
         telefono: '',
         direccion: ''
     });
+    const [orderId, setOrderId] = useState(null)
 
     useEffect(() => {
         if (!loading && data) {
@@ -26,8 +27,6 @@ const Cart = () => {
             setTotal(newTotal);
         }
     }, [loading, data, items]);
-
-    if (loading) return <><CircularProgress /></>;
 
     const handleRemoveItem = (productId) => {
         removeItem(productId);
@@ -49,20 +48,27 @@ const Cart = () => {
         }));
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        
-        console.log('Dentro del submit');
+    const db = getFirestore();
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+            const order = {
+                buyer: {...formData},
+                items: {...populatedCart},
+                total: total
+            }
+            const ordersCollection = collection(db, 'orders');
+            addDoc(ordersCollection, order).then(({id})=> setOrderId(id));
+            clearCart();
     };
 
+    if (loading) return <CircularProgress />;
+
     if (items.length === 0) {
-        return (
-            <>
-                <p style={{ fontSize: '24px', textAlign: 'center' }}>El carrito está vacío.</p>
-            </>
-        );
+        return <p style={{ fontSize: '24px', textAlign: 'center' }}>El carrito está vacío.</p>;
     }
+
+    const populatedCart= [];
 
     return (
         <>
@@ -77,11 +83,18 @@ const Cart = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {items.map(product => {
-                        const productData = data.find(el => el.id === product.id);
-                        return <ItemCart key={product.id} product={productData} quantity={product.quantity} onRemove={() => handleRemoveItem(product.id)} />
-                    })}
-                </tbody>
+                {items.map((product) => {
+                    const productData = data.find((el) => el.id === product.id);
+                    const convertedPrice = parseFloat(productData.precio);
+                    populatedCart.push({
+                        nombre: productData.nombre,
+                        precio:convertedPrice,
+                        quantity: product.quantity
+                    })
+                    
+                    return <ItemCart key={product.id} product={{...productData, precio: convertedPrice}} quantity={product.quantity} onRemove={() => handleRemoveItem(product.id)} />;
+                })}
+            </tbody>
                 <tfoot>
                     <tr>
                         <td></td>
@@ -91,43 +104,18 @@ const Cart = () => {
                     </tr>
                 </tfoot>
             </table>
-            <Button variant="contained" onClick={handleClearCart}>Vaciar Carrito</Button>
+            <Button variant="contained" onClick={handleClearCart}>
+                Vaciar Carrito
+            </Button>
             <Button variant="contained" onClick={handleCheckout}>
                 Checkout
             </Button>
             {showForm && (
                 <div style={{ marginTop: '20px' }}>
                     <form onSubmit={handleSubmit}>
-                        <TextField
-                            id="nombre"
-                            name="nombre"
-                            label="Nombre"
-                            value={formData.nombre}
-                            onChange={handleInputChange}
-                            variant="outlined"
-                            fullWidth
-                            margin="normal"
-                        />
-                        <TextField
-                            id="telefono"
-                            name="telefono"
-                            label="Teléfono"
-                            value={formData.telefono}
-                            onChange={handleInputChange}
-                            variant="outlined"
-                            fullWidth
-                            margin="normal"
-                        />
-                        <TextField
-                            id="direccion"
-                            name="direccion"
-                            label="Dirección"
-                            value={formData.direccion}
-                            onChange={handleInputChange}
-                            variant="outlined"
-                            fullWidth
-                            margin="normal"
-                        />
+                        <TextField id="nombre" name="nombre" label="Nombre" value={formData.nombre} onChange={handleInputChange} variant="outlined" fullWidth margin="normal" />
+                        <TextField id="telefono" name="telefono" label="Teléfono" value={formData.telefono} onChange={handleInputChange} variant="outlined" fullWidth margin="normal" />
+                        <TextField id="direccion" name="direccion" label="Dirección" value={formData.direccion} onChange={handleInputChange} variant="outlined" fullWidth margin="normal" />
                         <Button type="submit" variant="contained">
                             Enviar
                         </Button>
@@ -135,7 +123,8 @@ const Cart = () => {
                 </div>
             )}
         </>
-    )
-}
+    );
+};
 
 export default Cart;
+

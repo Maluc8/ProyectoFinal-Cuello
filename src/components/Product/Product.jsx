@@ -1,20 +1,35 @@
-import { Image } from "@mui/icons-material";
-import { Card, CardContent, Grid, Typography} from "@mui/material";
-import {Link } from 'react-router-dom'
-import AddProduct from "../AddProduct/AddProduct.jsx";
+import PropTypes from 'prop-types';
+import { Card, CardContent, Grid, Typography } from "@mui/material";
+import { Link } from 'react-router-dom';
+import AddProduct from "../AddProduct/AddProduct";
 
-const product = ({product}) =>{
-    const {id, imagen, nombre, precio} = product;
-    return (<Grid item key={id} xs={12} sm={6} md={4} lg={3}>
-        <Card className="card-products-container" >
-            <CardContent component={Link} to={`/item/${id}`}>
-                <Typography variant="h5">{nombre}</Typography>
-                <Image src={imagen} />
-                <Typography>{precio.toFixed(2)}</Typography>
-            </CardContent>
-            <AddProduct id={id}/>
-        </Card>
-    </Grid>)
-}
+const Product = ({ product }) => {
+    const { id, imagen, nombre, precio } = product;
 
-export default product;
+    return (
+        <Grid item key={id} xs={12} sm={6} md={4} lg={3}>
+            <Card className="card-products-container">
+                <Link to={`/item/${id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                    <CardContent>
+                        <Typography variant="h5">{nombre}</Typography>
+                        <img src={imagen} alt={nombre} style={{ width: '100%', height: 'auto', objectFit: 'cover' }} />
+                        <Typography>{precio.toFixed(2)}</Typography>
+                    </CardContent>
+                </Link>
+                <AddProduct id={id} />
+            </Card>
+        </Grid>
+    );
+};
+
+Product.propTypes = {
+    product: PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        imagen: PropTypes.string.isRequired,
+        nombre: PropTypes.string.isRequired,
+        precio: PropTypes.number.isRequired
+    }).isRequired
+};
+
+export default Product;
+
