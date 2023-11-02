@@ -12,7 +12,7 @@ const Product = ({ product }) => {
                 <Link to={`/item/${id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
                     <CardContent>
                         <Typography variant="h5">{nombre}</Typography>
-                        <img src={imagen} alt={nombre} style={{ width: '100%', height: 'auto', objectFit: 'cover' }} />
+                        <img src={imagen} alt={nombre} style={{ width: '45vh', height: 'auto', objectFit: 'cover' }} />
                         <Typography>{precio.toFixed(2)}</Typography>
                     </CardContent>
                 </Link>
