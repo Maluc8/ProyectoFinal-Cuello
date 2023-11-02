@@ -7,7 +7,7 @@ import ProductDetail from '../ProductDetail/ProductDetail.jsx'
 function CategoryProductsList() {
     const {id} = useParams();
     const {data, loading} = useAsyncMock(products);
-
+    console.log(id);
     if (loading) return <CircularProgress />
 
     const categorySelected = data.filter(category => id === category.categoria)

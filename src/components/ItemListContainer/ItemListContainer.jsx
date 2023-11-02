@@ -4,10 +4,15 @@ import { useParams } from 'react-router-dom';
 import useFirestore from '../../hooks/useFirestore.jsx';
 
 function ItemListContainer() {
-    const { data, loading } = useFirestore('menu', 'categoria', useParams().id);
+    const categoria = useParams().id;
+    console.log(categoria);
+    let { data, loading } = useFirestore('menu', 'categoria');
 
     if (loading) return <CircularProgress />;
 
+    if(categoria){
+        data = data.filter(product => product.categoria === categoria)
+    }
     return (
         <div className='container'>
             <Typography variant={'h2'}>Menu</Typography>
